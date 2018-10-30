@@ -42,6 +42,7 @@ app.get("/", (req, res) => {
 // with the keys and values you want to persist in the database.
 app.post("/products", (req, res) => {
   const product = new Product(req.body)
+  console.log("Body: ", req.body)
 
   product.save()
     .then(() => { res.status(201).send("Product created") })
