@@ -24,7 +24,14 @@ mongoose.connection.once("open", () => console.log("Connected to mongodb"))
 // This is the beginning of a model for the Product object.
 const Product = mongoose.model("Product", {
   name: String,
-  // Add more attributes to your product here.
+  type: String,
+  size: String,
+  numberInPack: Number,
+  substance: String,
+  price: Number,
+  deliveryTime: String,
+  image: String,
+  description: String
 })
 
 app.get("/", (req, res) => {
@@ -41,6 +48,13 @@ app.post("/products", (req, res) => {
     .catch(err => { res.status(400).send(err) })
 })
 
+app.get("/products/", (req, res) => {
+  Product.find().then(products => {
+    res.json(products)
+  })
+})
+
 // Add more endpoints here!
+
 
 app.listen(8080, () => console.log("Products API listening on port 8080!"))
