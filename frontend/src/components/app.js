@@ -21,7 +21,6 @@ state = {
   }
 }
 
-
 getProducts = () => {
   console.log('Getting products!')
   const query = "http://localhost:8080/products/"
@@ -59,11 +58,8 @@ postProduct = () => {
   })
 }
 
-
   render() {
-    let storeProducts = []
-    // storeProducts = productsJson.products
-    storeProducts = this.state.products
+    let storeProducts = this.state.products
 
     // Removes the last word of product name if longer than 18 characters
     storeProducts.forEach((product) => {
@@ -99,7 +95,9 @@ postProduct = () => {
             })}
             </div>
           </section>
-          <button onClick={this.postProduct}>New Product</button>
+          <div className="testButtonContainer">
+            <button className="testButtonAddProduct" onClick={this.postProduct}>Add Product</button>
+          </div>
         </div>
       </div>
     )
